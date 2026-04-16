@@ -1,4 +1,4 @@
-import ListaDeTareas from "./ListaDeTareas";
+import ListaDeTarea from "./ListaDeTarea";
 
 const FormularioTarea = () => {
   return (
@@ -14,7 +14,7 @@ const FormularioTarea = () => {
           <button className="btn btn-primary">Enviar</button>
         </div>
       </form>
-      <ListaDeTareas></ListaDeTareas>
+      <ListaDeTarea></ListaDeTarea>
     </section>
   );
 };
