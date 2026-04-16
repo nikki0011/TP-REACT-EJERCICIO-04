@@ -8,7 +8,16 @@ const FormularioTarea = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setArrayaTareas([...arrayTareas, tarea]);
+    const tareaBuscada = arrayTareas.find(
+      (itemTarea) => itemTarea.toLowerCase() === tarea.toLowerCase().trim(),
+    );
+    if (tareaBuscada) {
+      return alert("la tarea ya existe");
+    }
+
+    setArrayaTareas([...arrayTareas, tarea.toLowerCase().trim()]);
+
+    setTarea("");
   };
 
   return (
