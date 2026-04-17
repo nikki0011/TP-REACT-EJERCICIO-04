@@ -1,9 +1,13 @@
 import ItemTarea from "./ItemTarea";
 
-const ListaDeTarea = () => {
-  return <ul className="list-group">
-    <ItemTarea></ItemTarea>
-  </ul>;
+const ListaDeTarea = ({ arrayTareasProps }) => {
+  return (
+    <ul className="list-group">
+      {arrayTareasProps.map(() => (
+        <ItemTarea></ItemTarea>
+      ))}
+    </ul>
+  );
 };
 
 export default ListaDeTarea;
