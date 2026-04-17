@@ -3,8 +3,8 @@ import ItemTarea from "./ItemTarea";
 const ListaDeTarea = ({ arrayTareasProps }) => {
   return (
     <ul className="list-group">
-      {arrayTareasProps.map(() => (
-        <ItemTarea></ItemTarea>
+      {arrayTareasProps.map((textoTarea, index) => (
+        <ItemTarea key={index} textoTareaProps ={textoTarea}></ItemTarea>
       ))}
     </ul>
   );
