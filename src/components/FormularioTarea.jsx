@@ -20,6 +20,12 @@ const FormularioTarea = () => {
     setTarea("");
   };
 
+  const borrarTarea = (nombreTarea)=>{
+    const arrayFiltrado = arrayTareas.filter((itemTarea)=> itemTarea !== nombreTarea)
+
+    setArrayaTareas(arrayFiltrado)
+  }
+
   return (
     <section>
       <form onSubmit={handleSubmit}>
@@ -35,7 +41,7 @@ const FormularioTarea = () => {
           <button className="btn btn-primary">Enviar</button>
         </div>
       </form>
-      <ListaDeTarea arrayTareasProps= {arrayTareas}></ListaDeTarea>
+      <ListaDeTarea arrayTareasProps= {arrayTareas} borrarTareaProps ={borrarTarea}></ListaDeTarea>
     </section>
   );
 };
