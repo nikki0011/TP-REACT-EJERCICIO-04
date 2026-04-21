@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListaDeTarea from "./ListaDeTarea";
 
 const FormularioTarea = () => {
-  const [arrayTareas, setArrayaTareas] = useState([]);
+  const tareasLocalStorage =
+    JSON.parse(localStorage.getItem("arrayTareasKey")) || [];
+  const [arrayTareas, setArrayaTareas] = useState([tareasLocalStorage]);
   const [tarea, setTarea] = useState("");
+
+  useEffect(() => {
+    console.log("desde el useEffect");
+    localStorage.setItem("arrayTareasKey", JSON.stringify(arrayTareas));
+  }, [arrayTareas]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,11 +27,13 @@ const FormularioTarea = () => {
     setTarea("");
   };
 
-  const borrarTarea = (nombreTarea)=>{
-    const arrayFiltrado = arrayTareas.filter((itemTarea)=> itemTarea !== nombreTarea)
+  const borrarTarea = (nombreTarea) => {
+    const arrayFiltrado = arrayTareas.filter(
+      (itemTarea) => itemTarea !== nombreTarea,
+    );
 
-    setArrayaTareas(arrayFiltrado)
-  }
+    setArrayaTareas(arrayFiltrado);
+  };
 
   return (
     <section>
@@ -41,7 +50,10 @@ const FormularioTarea = () => {
           <button className="btn btn-primary">Enviar</button>
         </div>
       </form>
-      <ListaDeTarea arrayTareasProps= {arrayTareas} borrarTareaProps ={borrarTarea}></ListaDeTarea>
+      <ListaDeTarea
+        arrayTareasProps={arrayTareas}
+        borrarTareaProps={borrarTarea}
+      ></ListaDeTarea>
     </section>
   );
 };
